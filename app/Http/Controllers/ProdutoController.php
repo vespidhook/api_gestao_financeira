@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produto;
-use App\Http\Requests\StoreProdutoRequest;
-use App\Http\Requests\UpdateProdutoRequest;
+use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
@@ -19,22 +17,12 @@ class ProdutoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProdutoRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProdutoRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -42,21 +30,10 @@ class ProdutoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Produto  $produto
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Produto $produto)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Produto  $produto
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Produto $produto)
+    public function show($id)
     {
         //
     }
@@ -64,11 +41,11 @@ class ProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateProdutoRequest  $request
-     * @param  \App\Models\Produto  $produto
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProdutoRequest $request, Produto $produto)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +53,10 @@ class ProdutoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Produto  $produto
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produto $produto)
+    public function destroy($id)
     {
         //
     }
