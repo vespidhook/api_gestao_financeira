@@ -77,7 +77,7 @@ class EntradaController extends Controller
             "data" => $entrada
         ]);
     }
-
+ 
     /**
      * Remove the specified resource from storage.
      *
