@@ -6,17 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Usuario extends Model
+class Entrada extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, softDeletes;
 
     protected $fillable = [
         'nome',
-        'email',
-        'password',
-    ];
-
-    protected $hidden = [
-        'password',
+        'valor',
     ];
 }

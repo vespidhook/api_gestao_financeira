@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
-use App\Http\Requests\StoreUsuarioRequest;
-use App\Http\Requests\UpdateUsuarioRequest;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -16,7 +14,9 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = Usuario::simplePaginate(10);
+
+        return response()->json($usuarios); 
     }
 
     /**
@@ -27,7 +27,21 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $usuario = new Usuario;
+        // $usuario->nome = $request->input('nome');
+        // $usuario->email = $request->input('email');
+        // $usuario->password = bcrypt($request->input('password'));
+        // $usuario->save();
+
+        $usuario = Usuario::create([
+            'nome' => $request->input('nome'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        return response()->json([
+            "data" => $usuario
+        ], 201);
     }
 
     /**
@@ -36,9 +50,19 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function show(Usuario $usuario)
+    public function show($usuario)
     {
-        //
+        $usuario = Usuario::find($usuario);
+
+        if($usuario == null) {
+            return response()->json([
+                "msg" => "Usuário não encontrado"
+            ], 404);
+        }
+
+        return response()->json([
+            "data" => $usuario
+        ]);
     }
 
     /**
@@ -50,7 +74,14 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        //
+        $usuario->nome = $request->input('nome');
+        $usuario->email = $request->input('email');
+        $usuario->password = bcrypt($request->input('password'));
+        $usuario->save();
+
+        return response()->json([
+            "data" => $usuario
+        ]);
     }
 
     /**
@@ -61,6 +92,11 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        Usuario::destroy($usuario->id);
+
+        return response()->json([
+            "msg" => "Usuário " . $usuario->nome . " removido com sucesso"
+        ]);
     }
 }
+ 
