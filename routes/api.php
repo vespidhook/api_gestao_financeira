@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\EntradaController;
+use App\Http\Controllers\CompraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ use App\Http\Controllers\EntradaController;
 
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('entradas', EntradaController::class);
+Route::resource('compras', CompraController::class);
